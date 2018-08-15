@@ -9,6 +9,7 @@ Usage :
 
 pgx-daogen –init
 This creates an empty godao.config file in the current directory. This is the file which pgx-daogen will use to generate all the code. A sample config file is given below. The fields are self-explanatory. The only point to note is that, “*” can be specified as the only value of the Tables array. Recordsets will then be generated for all tables of the database.
+```
 {
 "Hostname" : "localhost",
 "Dbname" : "mydatabase",
@@ -25,6 +26,7 @@ This creates an empty godao.config file in the current directory. This is the fi
 ],
 "PackageName" : "dao"
 }
+```
 
 Post this executing “pgx-daogen” will generate all the code under a directory, with the same name as the Packagename specified in the config file.
 

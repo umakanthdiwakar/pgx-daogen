@@ -78,7 +78,6 @@ Using the generated recordset. Assuming that a recordset was generated for a tab
         fmt.Println(in.Record)
         fmt.Println(in.VO)
     }
-    
     // Using FetchRecords. This is an alternative method to using NextRow. Will fetch the entire rowset as an array of VOs.
     in.SelectAll()
     d := in.FetchRecords()

@@ -66,6 +66,7 @@ b.	Whenever the Update method is called, the version column value will be increm
 
 Using the generated recordset. Assuming that a recordset was generated for a table named "inbox", with columns including "event_type" and "message_body". Then the generated code can be used as below:
 
+```
   // CreateConnection comes from pgdb.go
     dbase, _ := CreateConnection("localhost", "WEBR", "postgres", "admin", 5)
     in := InboxTable{}
@@ -88,3 +89,5 @@ Using the generated recordset. Assuming that a recordset was generated for a tab
     // Illustrating Update
     in.SetMessageBody("hello this is changed")
     dbase.Close()
+```
+

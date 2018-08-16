@@ -1,7 +1,7 @@
 # pgx-daogen
 Generate Database access classes for postgres based on the pgx llibrary
 
-GO is currently what we use to build micro-services, backed by postgres databases. “pgx” (https://github.com/jackc/pgx), is the framework of choice for developing database access code.
+GO with postgres is a fantastic platform to build micro-services. “pgx” (https://github.com/jackc/pgx), is the framework of choice for developing database access code for postgres and outperforms the pq library significantly.
 
 However, given the procedural nature of pgx code, the issue facing a development team starting off with pgx, is the enourmous amount of boilerplate code needed to develop the database access objects. The purpose of pgx-daogen, is to generate well-defined data access objects, using pgx, from the meta-data in a specific postgres database. The aim here is to remove all dependecy on pgx-daogen from a runtime perspective and to only have well written pgx specific GO code. No hidden reflection based magic here.
 

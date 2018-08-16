@@ -72,8 +72,7 @@ Using the generated recordset. Assuming that a recordset was generated for a tab
 ```
   // CreateConnection comes from pgdb.go
     dbase, _ := CreateConnection("localhost", "WEBR", "postgres", "admin", 5)
-    in := InboxTable{}
-    in.Initialize(dbase)
+    in := NewInbox (dbase)
     // SelectFor is used to execute the in-built select query for random conditions. However
     // only columns in the specific table will be fetched
     in.SelectFor("event_type = $1", "event1")

@@ -6,9 +6,10 @@ GO is currently what we use to build micro-services, backed by postgres database
 However, given the procedural nature of pgx code, the issue facing a development team starting off with pgx, is the enourmous amount of boilerplate code needed to develop the database access objects. The purpose of pgx-daogen, is to generate well-defined data access objects, using pgx, from the meta-data in a specific postgres database. The aim here is to remove all dependecy on pgx-daogen from a runtime perspective and to only have well written pgx specific GO code. No hidden reflection based magic here.
 
 Usage :
-
+```
 pgx-daogen –init
-This creates an empty godao.config file in the current directory. This is the file which pgx-daogen will use to generate all the code. A sample config file is given below. The fields are self-explanatory. The only point to note is that, “*” can be specified as the only value of the Tables array. Recordsets will then be generated for all tables of the database.
+```
+This creates an empty godao.config file in the current directory. This is the file which pgx-daogen will use to generate all the code. A sample config file is given below. The fields are self-explanatory. The only point to note is that, “*” can also be specified as the  value of the Tables array. Recordsets will then be generated for all tables of the database.
 ```
 {
 "Hostname" : "localhost",
@@ -16,7 +17,7 @@ This creates an empty godao.config file in the current directory. This is the fi
 "Username" : "postgres",
 "Password" : "admin",
 "Tables" : [
-	"*"
+	"table1"
 ],
 "Queries" : [
 	{

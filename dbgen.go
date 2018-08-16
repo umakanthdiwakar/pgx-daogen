@@ -69,13 +69,14 @@ func generateProgram(tableName string, tableMap *TableMap) {
 	}
 	//---------------------------------------------------
 
-	//==========     Generate Initialize function ==============
+	//==========     Generate NewTable function ==============
 	{
-		ff("//Initialize - function to initialize the base struct\n")
-		ff(`func (t *%sTable) Initialize(dbconn *DBase) {
+		ff("//New%s - function to initialize the base struct\n", tableName1)
+		ff(`func New%s(dbconn *DBase) *%sTable {
+	t := %sTable{}
 	t.DBconn = dbconn
 	t.Statements = map[string]string{
-`, tableName1)
+`, tableName1, tableName1, tableName1)
 		s1 := ""
 		s2 := ""
 		s1, s2 = generateSelectStatement(tableName, tableMap)
@@ -89,6 +90,7 @@ func generateProgram(tableName string, tableMap *TableMap) {
 		ff("\tt.Record = %sRec {}\n", tableName1)
 		ff("\tt.VO = %sVO {}\n", tableName1)
 		ff("\tt.singleRowSelected = false\n")
+		ff("\treturn &t\n")
 		ff("}\n\n")
 	}
 	//-----------------------------------------------------

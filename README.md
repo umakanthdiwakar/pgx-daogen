@@ -9,7 +9,7 @@ However, given the procedural nature of pgx code, the issue facing a development
 ```
 pgx-daogen –init
 ```
-This creates an empty godao.config file in the current directory. This is the file which pgx-daogen will use to generate all the code. A sample config file is given below. The fields are self-explanatory. **\*** can  be specified as the  value of the Tables array. Queries for which query-objects are to be generated can be specified in the **Queries** section. Recordsets and Query objects will then be generated for all tables/queries specified.
+This creates an empty **godao.config** file in the current directory. This is the file which pgx-daogen will use to generate all the code. A sample config file is given below. The fields are self-explanatory. **\*** can  be specified as the  value of the Tables array. Queries for which query-objects are to be generated can be specified in the **Queries** section. Recordsets and Query objects will then be generated for all tables/queries specified.
 ```
 {
 "Hostname" : "localhost",
@@ -31,7 +31,7 @@ This creates an empty godao.config file in the current directory. This is the fi
 
 Once this configuration file is done, executing **pgx-daogen** will generate all the code under a directory, with the same name as the Packagename specified in the config file.
 
-The generated recordset for a table named Table1, will consist of the following:
+The generated recordset for a table named **Table1**, will consist of the following:
 1.	**Table1VO** – A struct with GO native types, comprising the columns of the table.
 2.	**Table1Rec** – A struct with pgx native types, comprising the columns of the table.
 3.	**Table1Table** – The primary table object. This is the object that will be instantiated and used by the user (developer).
@@ -66,10 +66,10 @@ The typical GO way of reading rows from tables involve:
 **pgx-daogen** also checks for column constraints and defaults and generates code accordingly. For example, if a date field has a default value of current date, then the generated *Insert* code does not bind these column values. To given another example, **pgx-daogen** identifies the primary key, and if this is auto-generated (if this is a serial type column), then it generates a RETURNING clause and sets the primary key VO property accordingly, post insert.
 
 ## Additional Features:
-1.	The generator supports version columns. When a table contains a column called **version**, the generated code will have the following changes:
-a.	In Insert method, the version column will be set to a value of 100.
-b.	Whenever the Update method is called, the version column value will be incremented by 1.
-2.	Key generation: To be able to generate alphanumeric keys automatically, the code generator supports a *seq_constants* table. This table needs to have three columns (list_table, sequence_name, constant_prefix). The framework also expects the sequences as given in seq_constants.sequence_name to be present in the database. Then the generated code will not accept user values for the primary key, but use the prefix and a 4 digit sequence to auto-generate the key.
+1.	The generator supports **version columns**. When a table contains a column called **version**, the generated code will have the following changes:
+    a.	In *Insert* method, the version column will be set to a value of 100.
+    b.	Whenever the Update method is called, the version column value will be incremented by 1.
+2.	**Key generation**: To be able to generate alphanumeric keys automatically, the code generator supports a *seq_constants* table. This table needs to have three columns (list_table, sequence_name, constant_prefix). The framework also expects the sequences as given in seq_constants.sequence_name to be present in the database. Then the generated code will not accept user values for the primary key, but use the prefix and a 4 digit sequence to auto-generate the key.
 
 
 ## Using the generated recordset. 
@@ -96,6 +96,7 @@ Assuming that a recordset was generated for a table named **inbox**, with column
 
     // Illustrating Update
     in.SetMessageBody("hello this is changed")
+    in.Update()
     dbase.Close()
 ```
 

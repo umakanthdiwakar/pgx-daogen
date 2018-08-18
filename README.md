@@ -66,10 +66,10 @@ The typical GO way of reading rows from tables involve:
 **pgx-daogen** also checks for column constraints and defaults and generates code accordingly. For example, if a date field has a default value of current date, then the generated *Insert* code does not bind these column values. To given another example, **pgx-daogen** identifies the primary key, and if this is auto-generated (if this is a serial type column), then it generates a RETURNING clause and sets the primary key VO property accordingly, post insert.
 
 ## Additional Features:
-1.	The generator supports **version columns**. When a table contains a column called **version**, the generated code will have the following changes:
-    a.	In *Insert* method, the version column will be set to a value of 100.
-    b.	Whenever the Update method is called, the version column value will be incremented by 1.
-2.	**Key generation**: To be able to generate alphanumeric keys automatically, the code generator supports a *seq_constants* table. This table needs to have three columns (list_table, sequence_name, constant_prefix). The framework also expects the sequences as given in seq_constants.sequence_name to be present in the database. Then the generated code will not accept user values for the primary key, but use the prefix and a 4 digit sequence to auto-generate the key.
+1. The generator supports **version columns**. When a table contains a column called **version**, the generated code will have the following changes:
+   a.	In *Insert* method, the version column will be set to a value of 100.
+   b.	Whenever the Update method is called, the version column value will be incremented by 1.
+2. **Key generation**: To be able to generate alphanumeric keys automatically, the code generator supports a *seq_constants* table. This table needs to have three columns (list_table, sequence_name, constant_prefix). The framework also expects the sequences as given in seq_constants.sequence_name to be present in the database. Then the generated code will not accept user values for the primary key, but use the prefix and a 4 digit sequence to auto-generate the key.
 
 
 ## Using the generated recordset. 

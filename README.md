@@ -1,5 +1,5 @@
 # pgx-daogen
-Generate Database access classes for postgres based on the pgx llibrary
+Generate Database access classes for PostgreSQL based on the pgx llibrary
 
 GO with postgres is a fantastic platform to build micro-services. “pgx” (https://github.com/jackc/pgx), is the framework of choice for developing database access code for postgres and outperforms the pq library significantly.
 

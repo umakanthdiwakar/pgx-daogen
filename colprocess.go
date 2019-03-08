@@ -111,10 +111,18 @@ var typeMap = map[string]GoColInfo{
 		pgValueField: "Bytes",
 		pgTypeCast:   "[]byte(",
 	},
+	"jsonb": GoColInfo{
+		voType:       "[]byte",
+		recType:      "pgtype.JSONB",
+		nullValue:    "[]byte{}",
+		pgValueField: "Bytes",
+		pgTypeCast:   "[]byte(",
+	},
 }
 
 func getGoColInfo(colType string) GoColInfo {
 	for k, v := range typeMap {
+		//fmt.Println ("coltype=", colType, "k=", k)
 		if strings.HasPrefix(colType, k) {
 			return v
 		}

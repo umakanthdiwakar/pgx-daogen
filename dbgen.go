@@ -345,6 +345,10 @@ func (t *%sTable) Update() error {
 // based on the current CurrentRows
 func (t *%sTable) FetchRecords() []%sVO {
 	t.VOs = []%sVO{}
+	if t.CurrentRows == nil {
+		return t.VOs
+	}
+	defer t.CurrentRows.Close()
 	for t.NextRow() {
 		v := t.VO
 		t.VOs = append(t.VOs, v)
